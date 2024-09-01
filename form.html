@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Item Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input, select {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add a New Menu Item</h2>
+        <form id="menuForm">
+            <label for="name"> Item Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <label for="taste">Taste:</label>
+            <input type="text" id="taste" name="taste" required>
+
+            <label for="is_drink">Is it a drink?</label>
+            <select id="is_drink" name="is_drink" required>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+
+            <label for="ingredients">Ingredients (comma separated):</label>
+            <input type="text" id="ingredients" name="ingredients" required>
+
+            <label for="num_sales">Number of Sales:</label>
+            <input type="number" id="num_sales" name="num_sales" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('menuForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                price: parseFloat(document.getElementById('price').value),
+                taste: document.getElementById('taste').value,
+                is_drink: document.getElementById('is_drink').value === 'true',
+                ingredients: document.getElementById('ingredients').value.split(',').map(item => item.trim()),
+                num_sales: parseInt(document.getElementById('num_sales').value, 10)
+            };
+
+            fetch('/menu-item', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Menu item added successfully!');
+                document.getElementById('menuForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error adding the menu item.');
+            });
+        });
+    </script>
+</body>
+</html>

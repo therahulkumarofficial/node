@@ -1,0 +1,7 @@
+// Ignore node_modules directory 
+// git rm -r --cached node_modules
+
+node_modules/
+
+// Other entries...
+
