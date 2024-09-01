@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Branch Naming: Master vs Main</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007acc;
+        }
+
+        h2 {
+            color: #005f99;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background-color: #f0f0f0;
+            border-left: 5px solid #007acc;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #007acc;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Git Branch Naming: Master vs Main</h1>
+        <p>The terms <span class="highlight">"master"</span> and <span class="highlight">"main"</span> refer to the default branch names in Git repositories. Here’s the difference between them:</p>
+        
+        <h2>1. Historical Context</h2>
+        <p><span class="highlight">Master:</span> Traditionally, <span class="highlight">master</span> was the default branch name when you initialized a Git repository. This has been the case since Git's inception in 2005.</p>
+        <p><span class="highlight">Main:</span> Starting around mid-2020, many organizations and platforms (including GitHub) began shifting the default branch name from <span class="highlight">master</span> to <span class="highlight">main</span>. This change was part of a broader effort to adopt more inclusive language in software and technology.</p>
+        
+        <h2>2. Functionality</h2>
+        <p>From a technical standpoint, there is <span class="highlight">no difference</span> in functionality between <span class="highlight">master</span> and <span class="highlight">main</span>. They are just names for branches and can be used interchangeably. The key point is that one is typically the primary or default branch where the main codebase resides.</p>
+
+        <h2>3. Which One to Use</h2>
+        <p><span class="highlight">New Repositories:</span> If you create a new repository, especially on platforms like GitHub, the default branch will likely be <span class="highlight">main</span>.</p>
+        <p><span class="highlight">Existing Repositories:</span> Older repositories might still use <span class="highlight">master</span> as the default branch name.</p>
+        <p><span class="highlight">Consistency:</span> If you’re working on a project with an existing repository, it’s important to use the same branch name as the rest of your team or project.</p>
+
+        <h2>4. Changing the Default Branch Name</h2>
+        <p>If you want to change an existing repository from <span class="highlight">master</span> to <span class="highlight">main</span>, you can rename the branch using the following commands:</p>
+
+        <div class="code-block">
+            <p>git branch -m master main</p>
+            <p>git push -u origin main</p>
+            <p>git push origin --delete master</p>
+        </div>
+
+        <p>After renaming, you may also need to update the default branch setting in your repository on the hosting platform.</p>
+
+        <footer>
+            &copy; 2024 Git Branch Naming Guide
+        </footer>
+    </div>
+</body>
+</html>
