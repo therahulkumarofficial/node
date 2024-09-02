@@ -3,6 +3,6 @@
 
 node_modules/
 extra.js
-
+.env
 // Other entries...
 
