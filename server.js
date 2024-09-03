@@ -13,7 +13,6 @@ app.use(bodyParser.json()); //req.body
 
 
 
-
 app.get('/', function (req, res) {
   res.send('Welcome to our Hotel');
 })
